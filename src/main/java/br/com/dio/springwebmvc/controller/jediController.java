@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-public class jediController {
+public class JediController {
 
     @Autowired
     private JediRepository repository;
@@ -25,7 +25,7 @@ public class jediController {
         final ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("jedi");
 
-        modelAndView.addObject("alljedi",repository.getAllJedi());
+        modelAndView.addObject("alljedi",repository.findAll());
         return modelAndView;
     }
 

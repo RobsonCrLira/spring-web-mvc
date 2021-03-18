@@ -1,26 +1,16 @@
 package br.com.dio.springwebmvc.repository;
 
 import br.com.dio.springwebmvc.model.Jedi;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class JediRepository {
+public interface JediRepository extends JpaRepository<Jedi, Long> {
 
-    private List<Jedi> jedi;
+    List<Jedi> findByNameContainingIgnoreCase(final String name);
 
-    public JediRepository() {
-        jedi = new ArrayList<>();
-        jedi.add(new Jedi("Luke", "Skywalker"));
-    }
-
-    public List<Jedi> getAllJedi(){
-        return this.jedi;
-    }
-
-    public void add(Jedi jedi) {
-        this.jedi.add(jedi);
-    }
+    void add(Jedi jedi);
 }
